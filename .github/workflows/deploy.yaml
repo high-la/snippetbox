@@ -33,13 +33,13 @@ jobs:
         uses: actions/checkout@v4
 
       # We use a simple shell-based SCP to avoid the 'tar: empty archive' issue
-      - name: Copy docker-compose.yml to VPS via SCP
+      - name: Copy docker-compose.yaml to VPS via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: "./docker-compose.yml"
+          source: "./docker-compose.yaml"
           target: "/srv/www/snippetbox"
           overwrite: true
       # running    

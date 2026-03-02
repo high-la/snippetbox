@@ -32,6 +32,9 @@ services:
 
     env_file: 
       - .env
+    volumes:
+      - ./.env:/app/.env:ro # copy .env file from host device /srv/www/snippetbox/.env to container
+      # why to support main.go file loads .env file from container
     ports:
       # Expose only the app port to the host for your Reverse Proxy
       - "127.0.0.1:52100:52100"

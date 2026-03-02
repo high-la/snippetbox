@@ -36,7 +36,10 @@ type application struct {
 func main() {
 
 	// Load environment variables from .env
-	godotenv.Load()
+	er := godotenv.Load(".env")
+	if er != nil {
+		log.Fatal("Error loading .env file")
+	}
 
 	// Use the slog.New() function to initialize a new structured logger, which
 	// writes to the standard out stream and uses the default settings.
@@ -48,7 +51,7 @@ func main() {
 	}))
 
 	// --------------------
-	// Database
+	// Database.
 	// --------------------
 	// Don't ever reorder the "os.Getenv" block
 
